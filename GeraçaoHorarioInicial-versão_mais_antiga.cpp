@@ -16,7 +16,7 @@ void SimulatedAnnealing(Oferta SolucaoInicial[MAX_SEMESTRE][5][2], float taxaRes
 	//int soluGeral = 0;
 	//double porSolBoas,porSolRuins,porSolOtimas;
 	
-	// ATRIBUINDO PISIÇOES VAZIAS A MATRIZ DE SOLUÇAO FINAL
+	// ATRIBUINDO PISIÃ‡OES VAZIAS A MATRIZ DE SOLUÃ‡AO FINAL
     for(j = 1; j <= numeroSemestres; j++){
     	for(k = 0; k < 5; k++){
     		for(m = 0; m < 2; m++){
@@ -24,7 +24,7 @@ void SimulatedAnnealing(Oferta SolucaoInicial[MAX_SEMESTRE][5][2], float taxaRes
 			}
 		}   		
 	}
-	// ATRIBUINDO VALORES VAZIOS AS POSIÇOES DA MATRIZ DE SOLUÇAO VIZINHA
+	// ATRIBUINDO VALORES VAZIOS AS POSIÃ‡OES DA MATRIZ DE SOLUÃ‡AO VIZINHA
 	for(j = 1; j <= numeroSemestres; j++){
     	for(k = 0; k < 5; k++){
     		for(m = 0; m < 2; m++){
@@ -32,7 +32,7 @@ void SimulatedAnnealing(Oferta SolucaoInicial[MAX_SEMESTRE][5][2], float taxaRes
 			}
 		}   		
 	}                                                                                                                                                                                                                                                           
-	// SOLUÇAO FINAL RECEBE A SOLUÇAO INICIAL
+	// SOLUÃ‡AO FINAL RECEBE A SOLUÃ‡AO INICIAL
 	for(j = 1; j <= numeroSemestres; j++){
     	for(k = 0; k < 5; k++){
     		for(m = 0; m < 2; m++){
@@ -44,17 +44,17 @@ void SimulatedAnnealing(Oferta SolucaoInicial[MAX_SEMESTRE][5][2], float taxaRes
 	// RECEBENDO A TEMPERATURA INICIAL
 	double Temperatura = TI;
 	
-	// CRIAÇAO E INICIALIZAÇAO DA VARIAVEL QUE VAI INCREMENTAR ATE O NUMERO MAXIMO DE SOLUÇOES VIZINHAS 
+	// CRIAÃ‡AO E INICIALIZAÃ‡AO DA VARIAVEL QUE VAI INCREMENTAR ATE O NUMERO MAXIMO DE SOLUÃ‡OES VIZINHAS 
 	double iterT = 0;
 	
-	// FUNÇAO QUE ATRIBUI VALOR NULO A FUNÇAO RAND USADA PARA SORTEAR ALEATORIAMENTE AS POSIÇOES
+	// FUNÃ‡AO QUE ATRIBUI VALOR NULO A FUNÃ‡AO RAND USADA PARA SORTEAR ALEATORIAMENTE AS POSIÃ‡OES
 	srand( (unsigned)time(NULL)); // Atribuindo valor nulo ao Rand() para os sorteios aleaatorios.
 	
 	// SIMULATED ANNEALING INICIA AQUI
 	while(Temperatura > TF){
 		while(iterT < SAmax){
 			
-			// SOLUÇAO VIZINHA RECEBE A SOLUÇAO ATUAL
+			// SOLUÃ‡AO VIZINHA RECEBE A SOLUÃ‡AO ATUAL
 			for(j = 1; j <= numeroSemestres; j++){
 				
 		    	for(k = 0; k < 5; k++){
@@ -64,8 +64,8 @@ void SimulatedAnnealing(Oferta SolucaoInicial[MAX_SEMESTRE][5][2], float taxaRes
 				}   		
 			}
 			 
-			// TRABALHAR NESTA FUNÇAO IMPLEMENTANDO A MUDANÇA DE ACORDO COM AS DISCIPLINAS QUE UM PROFESSOR POD MINISTRAR!!!!!!
-			// FUNÇAO RESPONSAVEL POR GERAR SOLUÇOES VIZINHAS Obs.: A geraçao de soluçao vizinha esta sendo realizada pela troca de uma discplina com outra de mesma carga horaria em cada semestre.
+			// TRABALHAR NESTA FUNÃ‡AO IMPLEMENTANDO A MUDANÃ‡A DE ACORDO COM AS DISCIPLINAS QUE UM PROFESSOR POD MINISTRAR!!!!!!
+			// FUNÃ‡AO RESPONSAVEL POR GERAR SOLUÃ‡OES VIZINHAS Obs.: A geraÃ§ao de soluÃ§ao vizinha esta sendo realizada pela troca de uma discplina com outra de mesma carga horaria em cada semestre.
 			for(j = 1; j <= numeroSemestres;j++){			    	
 							
                 b = 0 + rand() % 5;
@@ -100,15 +100,15 @@ void SimulatedAnnealing(Oferta SolucaoInicial[MAX_SEMESTRE][5][2], float taxaRes
 				}		   
 		    }
 		    
-			// ENCERRA A GERRAÇAO DA SOLUÇAO VIZINHA
+			// ENCERRA A GERRAÃ‡AO DA SOLUÃ‡AO VIZINHA
 			
-			// A VARIAVEL VERIFICAÇAO RECEBE A DIFERENCA ENTRE FUNÇOES DE CUSTO DA SOLUÇAO ATUAL E VIZINHA PARA UTILIZAR COMO COMPARAÇAO POSTERIORMENTE 
-			verificacao = funcaoObjetivo(solucaoVizinha, numeroSemestres, numeroProfessores, Prof) - funcaoObjetivo(SolucaoInicial, numeroSemestres, numeroProfessores, Prof); // Calculando a variaçao da funçao
+			// A VARIAVEL VERIFICAÃ‡AO RECEBE A DIFERENCA ENTRE FUNÃ‡OES DE CUSTO DA SOLUÃ‡AO ATUAL E VIZINHA PARA UTILIZAR COMO COMPARAÃ‡AO POSTERIORMENTE 
+			verificacao = funcaoObjetivo(solucaoVizinha, numeroSemestres, numeroProfessores, Prof) - funcaoObjetivo(SolucaoInicial, numeroSemestres, numeroProfessores, Prof); // Calculando a variaÃ§ao da funÃ§ao
 			
-			// A VARIAVEL PROBABILIDADE RECEBE A PROBABILIDADE BASEADA NA FORMULA A SEGUIR UTILIZANDO-SE DA VARIAÇAO E DA TEMPERATURA ATUAL PARA POSIVELMENTE UTILIZAR SOLUÇOES DE POIR CASO
+			// A VARIAVEL PROBABILIDADE RECEBE A PROBABILIDADE BASEADA NA FORMULA A SEGUIR UTILIZANDO-SE DA VARIAÃ‡AO E DA TEMPERATURA ATUAL PARA POSIVELMENTE UTILIZAR SOLUÃ‡OES DE POIR CASO
 			probabilidade = pow(2.7,( ( -(verificacao) ) / Temperatura));
 			
-			// COMPARANDO FUNÇAO DE CUSTO DA SOLUÇAO VIZINHA COMA SOLUÇAO INICIAL
+			// COMPARANDO FUNÃ‡AO DE CUSTO DA SOLUÃ‡AO VIZINHA COMA SOLUÃ‡AO INICIAL
 			if(verificacao < 0){
 					
 				for(j = 1; j <= numeroSemestres; j++){
@@ -145,10 +145,10 @@ void SimulatedAnnealing(Oferta SolucaoInicial[MAX_SEMESTRE][5][2], float taxaRes
 				}	
 			}
 			
-			// FIM DA COMPARAÇAO
+			// FIM DA COMPARAÃ‡AO
 			//printf("entrei\n");
 			
-			iterT++; // variavel de interaçao e incrementada
+			iterT++; // variavel de interaÃ§ao e incrementada
 		}
 		//if(funcaoObjetivo(solucaoFinal,numeroSemestres,numeroProfessores,Prof) < armaneza ){
 			//armaneza = funcaoObjetivo(solucaoFinal,numeroSemestres,numeroProfessores,Prof);
@@ -161,7 +161,7 @@ void SimulatedAnnealing(Oferta SolucaoInicial[MAX_SEMESTRE][5][2], float taxaRes
 		
 		Temperatura = Temperatura * taxaResfriamento; // A temperatura e incrementada ao ser mutiplicacda pela a taxa de resfriamento
 		//temp++;
-		iterT = 0; // A variavel de interaçao recebe zero para realizar uma nova verificaçao;
+		iterT = 0; // A variavel de interaÃ§ao recebe zero para realizar uma nova verificaÃ§ao;
 	}
 	//fclose(sol);
 	
@@ -188,7 +188,7 @@ void SimulatedAnnealing(Oferta SolucaoInicial[MAX_SEMESTRE][5][2], float taxaRes
             fprintf(horario,"SEMESTRE 8:\n");
         }
     	
-    	fprintf(horario,"Horario/Dia Segunda Terça Quarta Quinta Sexta\n");   
+    	fprintf(horario,"Horario/Dia Segunda TerÃ§a Quarta Quinta Sexta\n");   
 		fprintf(horario,"6:30-8:20 ");
 		
 	    for(k = 0; k < 5; k++){	        		
@@ -250,18 +250,18 @@ void SimulatedAnnealing(Oferta SolucaoInicial[MAX_SEMESTRE][5][2], float taxaRes
 	printf("Professores que estao com folga = %d\n",FuncaoCusto4(solucaoFinal, numeroSemestres, numeroProfessores, RecProf));
 	//printf("entraram %d solucoes na probabilidade\n",solp);
 	//printf("a Temperatura foi incrementada  vezes =  %d\n",temp);
-	/*printf("A quantidaee se soluçoes Geral foi =  %d\n",soluGeral);
-	printf("A quantidaee se soluçoes Otimas foi =  %d\n",solOtimas);
-	printf("A quantidaee se soluçoes Boas foi =  %d\n",solBoas);
-	printf("A quantidaee se soluçoes Ruins foi =  %d\n",soluGeral - (solOtimas + solBoas));
-	printf("A porcentahgem de soluçoes Otimas foi =  %.2lf\n",(solOtimas/soluGeral));
-	printf("A porcentahgem de soluçoes Boas foi =  %.2lf\n",(solBoas/soluGeral));*/
+	/*printf("A quantidaee se soluÃ§oes Geral foi =  %d\n",soluGeral);
+	printf("A quantidaee se soluÃ§oes Otimas foi =  %d\n",solOtimas);
+	printf("A quantidaee se soluÃ§oes Boas foi =  %d\n",solBoas);
+	printf("A quantidaee se soluÃ§oes Ruins foi =  %d\n",soluGeral - (solOtimas + solBoas));
+	printf("A porcentahgem de soluÃ§oes Otimas foi =  %.2lf\n",(solOtimas/soluGeral));
+	printf("A porcentahgem de soluÃ§oes Boas foi =  %.2lf\n",(solBoas/soluGeral));*/
 	
 	
 }
 
 
-// FUNÇAO PRINCIPAL
+// FUNÃ‡AO PRINCIPAL
 int main(){	
 
 	setlocale(LC_ALL,"");
@@ -281,7 +281,7 @@ int main(){
     printf("Digite o Numero de Professores:\n");
 	scanf("%d", &numeroProfessores);
 	
-    // ATRIBUINDO PISIÇOES VAZIAS A MATRIZ DE HORARIOS
+    // ATRIBUINDO PISIÃ‡OES VAZIAS A MATRIZ DE HORARIOS
     for(j = 1; j <= numeroSemestres; j++){
     	for(k = 0; k < 5; k++){
     		for(m = 0; m < 2; m++){
@@ -333,7 +333,7 @@ int main(){
 			
 	} 
     
-	// GERANDO A SOLUÇAO (HORARIO) INICIAL
+	// GERANDO A SOLUÃ‡AO (HORARIO) INICIAL
     for(j = 1; j <= numeroSemestres; j++){
          for(k = 0; k < 5; k++){
         	for(m = 0; m < 2; m++){
